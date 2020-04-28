@@ -1,0 +1,405 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass[handout, 10 pt]{beamer}
+\usepackage{comment}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+%\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\newcommand*{\myfont}{\fontfamily{tahoma}\selectfont}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+\usepackage{graphicx,amssymb,amsmath, mathtools, outlines}
+\usepackage{mathrsfs}
+% \usepackage{tikz, standalone, float, comment, tikz-cd}
+\usepackage{amscd, amsthm, amsfonts, braket, inputenc,xcolor,setspace, hyperref,comment, gensymb}
+
+
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\def\VR{\kern-\arraycolsep\strut\vrule &\kern-\arraycolsep}
+\def\vr{\kern-\arraycolsep & \kern-\arraycolsep}
+\usepackage{graphicx,mathtools} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+
+
+% \usepackage{tikz-cd}
+% \usepackage{extarrows}
+
+\pgfdeclarelayer{edgelayer}
+\pgfdeclarelayer{nodelayer}
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,foreground,edgelayer,nodelayer,main}
+
+\usepackage{blkarray}
+
+%%
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{corollary}{Corollary}
+%\newtheorem{proposition}{Proposition}
+%\newtheorem{remark}{Remark}
+%\newtheorem{definition}{Definition}
+\newcommand{\huptwo}{\textrm{H}^{2}(\Gamma,\textrm{Hom}_{\mathbb{F}_{p}}(V,V))}
+\newcommand{\charg}[3]{\textrm{H}^{#1}(#2,#3)}
+%Page Zero-----------------------------------------------------------
+
+% \makeatletter
+% \tikzset{join/.code=\tikzset{after node path={%
+% \ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+% edge[every join]#1(\tikzchaincurrent)\fi}}}
+% \makeatother
+% %
+% \tikzset{>=stealth',every on chain/.append style={join},
+%          every join/.style={->}}
+% \tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
+%   execute at end node=$]
+   
+%   \makeatletter
+% \tikzset{join/.code=\tikzset{after node path={%
+% \ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
+% edge[every join]#1(\tikzchaincurrent)\fi}}}
+% \makeatother
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title{Some Applications of Quantum Entanglement to Cryptography} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+\author{Wenqin Chen} % Your name
+\institute[Smith College] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{\normalsize{Smith College}\\ % Your institution for the title page
+\smallskip
+Thesis Advisors: Dr. David Meyer, Prof. Rajan Mehta
+% Joint work with Killian Meehan\\
+% \smallskip
+% \large{BIRS-CMO}\\
+}
+\date{May 1, 2020} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Overview} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------% Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+%\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+
+
+\section{Quantum Mechanics With Linear Algebra}
+
+
+
+\begin{frame}
+\frametitle{Qubit}
+
+
+
+\smallskip
+% \pause
+% a quiver is given by
+% \begin{itemize}
+% \pause
+% \item A set of vertices $Q_0$
+% \pause
+% \item A set of arrows $Q_1$
+% \pause
+% \item a function $s:Q_1 \to Q_0$ 
+% \pause
+% \item a function $e:Q_1 \to Q_0$ 
+% \pause
+% \end{itemize}
+A \textbf{qubit} $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
+where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
+More generally, a \textbf{qudit} is a unit vector in ${\mathbb{C}}^d$.
+\end{frame}
+
+\begin{frame}{Adjoint and Bra Vector}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Hermitian inner product}
+\vspace{-.2 in}
+\pause
+If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
+\pause
+\begin{enumerate}
+\item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
+\pause
+\item $\langle\ket{v}, \ket{w}\rangle=\overline{\langle\ket{w}, \ket{v}\rangle}$
+\pause
+\item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with equality if and only if }$\ket{v}=0$
+\pause
+\end{enumerate}
+for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$ denotes the conjugate of the complex number $z$.} 
+
+\bigskip
+For example, $\mathbb{C}^n$ is an inner product space.
+\end{frame}
+
+\begin{frame}
+\frametitle{Tensor product}
+The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors.
+\bigskip
+\pause
+
+Example: Say $A=\begin{pmatrix}
+a && b\\
+c && d
+\end{pmatrix},
+B=\begin{pmatrix}
+e && f && g
+\end{pmatrix}$.\\
+Then $A \otimes B
+=\begin{pmatrix}
+aB && bB\\
+cB && dB
+\end{pmatrix}
+=\begin{pmatrix} 
+ae && af && ag && be && bf && bg\\
+ce && cf && cg && de && df && dg
+\end{pmatrix}$
+\end{frame}
+
+
+
+\section{Measurements}
+\begin{frame}{Postulate 3 of Quantum Mechanics: Measurements}
+    A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+    \begin{equation}
+        M=\sum_m m P_m
+    \end{equation}
+    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable.
+\end{frame}
+
+\begin{frame}{(Continued)}
+    Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
+    \begin{equation}
+        p(m)=\braket{\psi|P_m|\psi}
+    \end{equation}
+    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
+    \begin{equation}
+        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
+    \end{equation}
+\end{frame}
+\begin{frame}{Example}
+\begin{block}{}
+    Consider a projective measurement described by the observable: \begin{equation}
+    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
+    \end{equation}
+    and a quantum state to be measured:
+        $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
+\end{block}
+\pause
+\begin{itemize}
+    \item $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1.
+    \pause
+    \item $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
+    \pause
+    \item Measurement of Z on $\ket{\psi}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
+\end{itemize}
+\end{frame}
+
+\section{Classical Cryptography vs Quantum Cryptography}
+\begin{frame}{Goals of Cryptography: Correctness and Security}
+\begin{itemize}
+\item An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
+\smallskip
+\pause
+\item An encryption scheme (Enc, Dec) is \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
+\begin{equation}
+    p(m)=p(m|e),
+\end{equation}
+where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{One-time Pad: an Encryption Scheme}
+\begin{itemize}
+    \item for a message $m \in \{0, 1\}^n$ using a key $k \in \{0, 1\}^n$
+    \pause
+    \item Encryption:
+    \begin{equation}
+    Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
+    \end{equation}
+    where $m_i \oplus k_i = m_i + k_i mod 2$.
+    \pause
+    \item Decryption:
+    \begin{equation}
+Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
+\end{equation}
+
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A game}
+    rules:
+\end{frame}
+
+\begin{frame}{Classical Strategy}
+    
+\end{frame}
+
+\begin{frame}{Quantum Strategy}
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.42]{"quantum strategy diagram".png}
+    \label{fig: quantum strategy diagram}
+\end{figure}
+\end{frame}
+
+\section{Classifications of entanglement}
+
+%--------------------SLIDE 7____________-----------------------
+\begin{frame}
+\frametitle{Algebraic Stability}
+
+
+\pause
+
+\begin{block}{}
+\begin{theorem}[Isometry Theorem]
+Let $P = (0,\infty)$, ${\mathcal{T}}(P) = ([0,\infty),+)$.  Then the interleaving metric $D$ equals the bottleneck metric $D_B$.
+\end{theorem}
+\end{block}
+
+\pause
+\smallskip
+
+This suggests the following representation-theoretic analogue of the isometry theorem.
+\pause
+
+\smallskip
+
+Let $P$ be a finite poset and let $K$ be a field.  Choose a full subcategory  $\mathcal{C} \subseteq A(P)$-mod, and let 
+\begin{itemize}
+\pause
+\item $D$ be the interleaving metric restricted to $\mathcal{C}$, and
+\pause
+\item $D_B$ be a bottleneck metric on $\mathcal{C}$ which incorporates some algebraic information.
+\end{itemize}
+\pause
+Prove that $Id:(\mathcal{C},D) \to(\mathcal{C},D_B) $ is an isometry.
+\end{frame}
+
+
+
+\begin{frame}
+
+
+\begin{center}
+\huge{THANK YOU!}
+
+
+\end{center}
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%%%%%%%%%%%%End ADDed%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
