@@ -16,7 +16,6 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[handout, 10 pt]{beamer}
-\usepackage{comment}
 
 \mode<presentation> {
 
@@ -29,7 +28,7 @@
 %\usetheme{Antibes}
 %\usetheme{Bergen}
 %\usetheme{Berkeley}
-\usetheme{Berlin}
+% \usetheme{Berlin}
 %\usetheme{Boadilla}
 %\usetheme{CambridgeUS}
 %\usetheme{Copenhagen}
@@ -50,7 +49,7 @@
 %\usetheme{Rochester}
 %\usetheme{Singapore}
 %\usetheme{Szeged}
-%\usetheme{Warsaw}
+\usetheme{Warsaw}
 
 % As well as themes, the Beamer class has a number of color themes
 % for any slide theme. Uncomment each of these in turn to see how it
@@ -64,8 +63,8 @@
 %\usecolortheme{dove}
 %\usecolortheme{fly}
 %\usecolortheme{lily}
-%\usecolortheme{orchid}
-%\usecolortheme{rose}
+% \usecolortheme{orchid}
+% \usecolortheme{rose}
 %\usecolortheme{seagull}
 %\usecolortheme{seahorse}
 %\usecolortheme{whale}
@@ -73,10 +72,10 @@
 
 %\newcommand*{\myfont}{\fontfamily{tahoma}\selectfont}
 
-%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
-%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+% \setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+% \setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
 
-%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+% \setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
 \usepackage{graphicx,amssymb,amsmath, mathtools, outlines}
 \usepackage{mathrsfs}
@@ -84,55 +83,39 @@
 \usepackage{amscd, amsthm, amsfonts, braket, inputenc,xcolor,setspace, hyperref,comment, gensymb}
 
 
-\usepackage{subcaption}
-\usepackage{graphicx}
-\usepackage{enumerate}
-\def\VR{\kern-\arraycolsep\strut\vrule &\kern-\arraycolsep}
-\def\vr{\kern-\arraycolsep & \kern-\arraycolsep}
-\usepackage{graphicx,mathtools} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+% \usepackage{subcaption}
+% \usepackage{graphicx}
+% \usepackage{enumerate}
+% \def\VR{\kern-\arraycolsep\strut\vrule &\kern-\arraycolsep}
+% \def\vr{\kern-\arraycolsep & \kern-\arraycolsep}
+% \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 
 
 % \usepackage{tikz-cd}
 % \usepackage{extarrows}
 
-\pgfdeclarelayer{edgelayer}
-\pgfdeclarelayer{nodelayer}
-\pgfdeclarelayer{background}
-\pgfdeclarelayer{foreground}
-\pgfsetlayers{background,foreground,edgelayer,nodelayer,main}
+% \pgfdeclarelayer{edgelayer}
+% \pgfdeclarelayer{nodelayer}
+% \pgfdeclarelayer{background}
+% \pgfdeclarelayer{foreground}
+% \pgfsetlayers{background,foreground,edgelayer,nodelayer,main}
 
 \usepackage{blkarray}
 
+\newcommand{\icol}[1]{% inline column vector
+  \left(\begin{smallmatrix}#1\end{smallmatrix}\right)%
+}
+
 %%
 %\newtheorem{theorem}{Theorem}
-%\newtheorem{lemma}{Lemma}
-%\newtheorem{corollary}{Corollary}
-%\newtheorem{proposition}{Proposition}
+
+\newtheorem{prop}{Proposition}
+\newtheorem{lemm}{Lemma}
+\newtheorem{corol}{Corollary}
 %\newtheorem{remark}{Remark}
 %\newtheorem{definition}{Definition}
-\newcommand{\huptwo}{\textrm{H}^{2}(\Gamma,\textrm{Hom}_{\mathbb{F}_{p}}(V,V))}
-\newcommand{\charg}[3]{\textrm{H}^{#1}(#2,#3)}
-%Page Zero-----------------------------------------------------------
-
-% \makeatletter
-% \tikzset{join/.code=\tikzset{after node path={%
-% \ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
-% edge[every join]#1(\tikzchaincurrent)\fi}}}
-% \makeatother
-% %
-% \tikzset{>=stealth',every on chain/.append style={join},
-%          every join/.style={->}}
-% \tikzstyle{labeled}=[execute at begin node=$\scriptstyle,
-%   execute at end node=$]
-   
-%   \makeatletter
-% \tikzset{join/.code=\tikzset{after node path={%
-% \ifx\tikzchainprevious\pgfutil@empty\else(\tikzchainprevious)%
-% edge[every join]#1(\tikzchaincurrent)\fi}}}
-% \makeatother
-
-
+% \newcommand{\huptwo}{\textrm{H}^{2}(\Gamma,\textrm{Hom}_{\mathbb{F}_{p}}(V,V))}
+% \newcommand{\charg}[3]{\textrm{H}^{#1}(#2,#3)}
 
 
 %----------------------------------------------------------------------------------------
@@ -172,43 +155,78 @@ Thesis Advisors: Dr. David Meyer, Prof. Rajan Mehta
 
 %\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
+\section{Motivation}
+\begin{comment}
+The Austrian physicist Erwin Schrödinger proposed this thought experiment involving a cat in a sealed box, with a device of a 50\% chance of killing the cat in the next hour. In the classical world, the cat is either alive or dead after 1 hour. However, in the quantum physics, at the instance before the box was open, the cat is equally alive and dead at the same time. it's only when the box is open, we see a single definite state.
+
+The atoms form a world of possibilities rather than one of definite things or facts.
+\end{comment}
+\begin{frame}{Schrödinger's cat}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{"Schrodinger's cat".png}
+    \caption{The cat is a blur of probability (half alive and half dead) until we observe it}
+    \label{fig:Schrödinger's cat}
+\end{figure}    
+\end{frame}
+
+\begin{comment}
+Another shocking thing about quantum mechanics is such phenomenon described by Albert Einstein as the "spooky action at a distance". What's so spooky about it is that one event in the universe can instantaneously affect another event arbitrarily far away, which seems to imply faster than light communication. We now refer to as entanglement and will go over it in more detail later. 
+\end{comment}
+\begin{frame}{"Spooky action at a distance"}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{"actual entanglement".jpg}
+    \caption{The First-Ever Photo of Quantum Entanglement captured by physicists at the University of Glasgow.}
+    \label{fig:actual entanglement}
+\end{figure}
+\end{frame}
+
+\begin{comment}
+In cryptography, Alice and Bob try to communicate securely under the pryiing eyes of Eve. In my thesis, I investigate to apply quantum mechanics phenomenon such as entanglement to enhance security in cryptography.
+% So that's one motivation behind my thesis, to utilize entanglement to better secure message transmission from Alice to Bob under the prying eyes of Eve. This is particularly important considering that the current crypto systems such as RSA can be easily broken with quantum computers.
+\end{comment}
+
+\begin{frame}{Alice and Bob}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.8]{"Alice Bob Eve".png}
+    \label{fig:Alice Bob Eve}
+\end{figure}    
+\end{frame}
 
 \section{Quantum Mechanics With Linear Algebra}
 
-
+\begin{comment}
+Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex vector space.  In the same way that the bit is the fundamental unit of classical computation and information, the quantum bit, or qubit is the basic unit of quantum information.  With this motivation in mind, we sometimes write $\ket{0} = \icol{1\\0}$, and $\ket{1} = \icol{0\\1}$. Note that the symbols "$\ket{0}$" and "$\ket{1}$" are read "ket one" and "ket two".\footnote{We are using so-called Bra-ket notation common in quantum mechanics}  While bits may only take the values $0$ or $1$, a qubit is a complex linear combination, or \textit{superposition} of $\ket{0}$ and $\ket{1}$ with norm equal to one. 
+\end{comment}
 
 \begin{frame}
 \frametitle{Qubit}
 
-
-
-\smallskip
-% \pause
-% a quiver is given by
-% \begin{itemize}
-% \pause
-% \item A set of vertices $Q_0$
-% \pause
-% \item A set of arrows $Q_1$
-% \pause
-% \item a function $s:Q_1 \to Q_0$ 
-% \pause
-% \item a function $e:Q_1 \to Q_0$ 
-% \pause
-% \end{itemize}
-A \textbf{qubit} $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
+\begin{itemize}
+    \item Let $\ket{0} = \icol{1\\0}$, $\ket{1} = \icol{0\\1}$.
+    \pause
+    \item A \textbf{qubit} $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
 where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
-More generally, a \textbf{qudit} is a unit vector in ${\mathbb{C}}^d$.
-\end{frame}
-
-\begin{frame}{Adjoint and Bra Vector}
-
+\pause
+\item i.e. a \textit{superposition} (complex linear combination) of $\ket{0}, \ket{1}$.
+\pause
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{"Qubit".png}
+    \caption{One physical interpretation of $\ket{0},\ket{1}$: the "ground" state and the "exited" state of an electron}
+    \label{fig: qubit}
+    \end{figure}
+\pause
+\item More generally, a \textbf{qudit} is a unit vector in ${\mathbb{C}}^d$.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
+
 \frametitle{Hermitian inner product}
-\vspace{-.2 in}
-\pause
+
 If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
 \pause
 \begin{enumerate}
@@ -225,33 +243,67 @@ for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$
 For example, $\mathbb{C}^n$ is an inner product space.
 \end{frame}
 
-\begin{frame}
-\frametitle{Tensor product}
-The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors.
-\bigskip
+\begin{frame}{Adjoint}
+    If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, $\forall \ket{v} \in V, \forall \ket{w} \in W$,
+\begin{equation}
+    \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle .
+\end{equation}
 \pause
-
-Example: Say $A=\begin{pmatrix}
-a && b\\
-c && d
-\end{pmatrix},
-B=\begin{pmatrix}
-e && f && g
-\end{pmatrix}$.\\
-Then $A \otimes B
-=\begin{pmatrix}
-aB && bB\\
-cB && dB
-\end{pmatrix}
-=\begin{pmatrix} 
-ae && af && ag && be && bf && bg\\
-ce && cf && cg && de && df && dg
-\end{pmatrix}$
+\begin{itemize}
+    \item Notice LHS inner product is taken in W, while RHS inner product is taken in V.
+    \pause
+    \item When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$.  
+    \pause
+    \item In this case, we'll write $A^\dagger=(\overline{A})^T$.
+\end{itemize}
 \end{frame}
 
+\begin{comment}
+Such is the motivation for the "bra-ket" notation, a convention in quantum mechanics.
+\end{comment}
+\begin{frame}{One special case: Bra Vector}
+\begin{itemize}
+    \item When the matrix $A$ is a column vector $\ket{v}$, Then, clearly $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$.
+    \pause
+    \item Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
+    \pause
+    \item Then
+    \begin{equation}
+    \bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
+    \end{equation}
+    where the dot on the left-hand side is just matrix multiplication.
+    \pause
+    \item We will write $\langle \ket{v},\ket{w}\rangle$ as $\braket{v|w}$ and refer to the inner product as the "bra-ket" of v and w.
+    % Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of v and w.
+\end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{Tensor product}
+\begin{itemize}
+    \item The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. \textcolor{green}{Can I change it to this? The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces to form larger vector spaces.}
+    \pause
+    \item The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. 
+    \pause
+    \item If $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
+\end{itemize}
+\pause
+\begin{block}{Example}
+Given two vectors $\ket{\psi_1}\in\mathbb{C}^{d_1}$ and $\ket{\psi_2}\in\mathbb{C}^{d_2}$, the tensor product is given by
+\begin{equation}
+\ket{\psi_1} \otimes\ket{\psi_2} = \icol{ a_1\\ \vdots \\ a_{d_1}} \otimes \ket{\psi_2} = {\icol{ a_1\ket{\psi_2}\\ \vdots \\a_{d_1}\ket{\psi_2}}}_.
+\end{equation}
+\end{block}
+\end{frame}
 
 \section{Measurements}
+% say there are four postulates in words but not in a mathematical sense.
+% only talk about measuring with respect to orthonormal basis
+% only briefly mention there are other measurements 
+% hermitian and square to themselves. example: orthonormal basis -> hermitian, square to themselves, and add up to I. example for computing proabbility and post-measurement state.
+% an example of bob distinguishing states with certainty from an orthonormal basis
+\textcolor{green}{don't mention observable on the slides (but mention in words), but just did as in preliminary section - orthonormal basis sum up to I}
+
 \begin{frame}{Postulate 3 of Quantum Mechanics: Measurements}
     A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
     \begin{equation}
@@ -261,6 +313,7 @@ ce && cf && cg && de && df && dg
 \end{frame}
 
 \begin{frame}{(Continued)}
+%still keep this
     Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
     \begin{equation}
         p(m)=\braket{\psi|P_m|\psi}
@@ -270,6 +323,9 @@ ce && cf && cg && de && df && dg
         \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
     \end{equation}
 \end{frame}
+
+
+
 \begin{frame}{Example}
 \begin{block}{}
     Consider a projective measurement described by the observable: \begin{equation}
@@ -288,21 +344,30 @@ ce && cf && cg && de && df && dg
 \end{itemize}
 \end{frame}
 
-\section{Classical Cryptography vs Quantum Cryptography}
-\begin{frame}{Goals of Cryptography: Correctness and Security}
-\begin{itemize}
-\item An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
-\smallskip
-\pause
-\item An encryption scheme (Enc, Dec) is \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
-\begin{equation}
-    p(m)=p(m|e),
-\end{equation}
-where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
-\end{itemize}
-
+\begin{frame}{Example}
+\begin{block}{}
+Orthogonal states can be reliably distinguished. More precisely, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
+\end{block}
 \end{frame}
+
+
+\section{Classical Cryptography vs Quantum Cryptography}
+% \begin{frame}{Goals of Cryptography: Correctness and Security}
+% \begin{itemize}
+% \item An encryption scheme (Enc, Dec) is correct if and only if for all possible messages m, and all possible keys k, we have m=Dec(k, Enc(k,m)).
+% \smallskip
+% \pause
+% \item An encryption scheme (Enc, Dec) is \textit{secure} if and only if for all prior distributions p(m) over messages, and all messages m, we have
+% \begin{equation}
+%     p(m)=p(m|e),
+% \end{equation}
+% where $e=Enc(k,m)$, and $p(m|e)$ is the conditional probability of m given e.
+% \end{itemize}
+% \end{frame}
+
+
 \begin{frame}{One-time Pad: an Encryption Scheme}
+% if alice and bob can agree upon a key that's as long as the length of the message, then in a sense it's unbreakable. not saying precisely about one-time pad, but show an example of the transcription of hello
 \begin{itemize}
     \item for a message $m \in \{0, 1\}^n$ using a key $k \in \{0, 1\}^n$
     \pause
@@ -325,8 +390,11 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{frame}
 
 \begin{frame}{Classical Strategy}
-    
+    3/4 no computation needed
 \end{frame}
+
+% still playing the same game, but now have the tool of entangled state and measuring on different bases
+% use the picture and split it to 3 steps (entangled part->Alice->Bob)
 
 \begin{frame}{Quantum Strategy}
     \begin{figure}[h]
@@ -336,48 +404,110 @@ Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
 \end{figure}
 \end{frame}
 
-\section{Classifications of entanglement}
-
-%--------------------SLIDE 7____________-----------------------
-\begin{frame}
-\frametitle{Algebraic Stability}
-
-
-\pause
-
-\begin{block}{}
-\begin{theorem}[Isometry Theorem]
-Let $P = (0,\infty)$, ${\mathcal{T}}(P) = ([0,\infty),+)$.  Then the interleaving metric $D$ equals the bottleneck metric $D_B$.
-\end{theorem}
-\end{block}
-
-\pause
-\smallskip
-
-This suggests the following representation-theoretic analogue of the isometry theorem.
-\pause
-
-\smallskip
-
-Let $P$ be a finite poset and let $K$ be a field.  Choose a full subcategory  $\mathcal{C} \subseteq A(P)$-mod, and let 
-\begin{itemize}
-\pause
-\item $D$ be the interleaving metric restricted to $\mathcal{C}$, and
-\pause
-\item $D_B$ be a bottleneck metric on $\mathcal{C}$ which incorporates some algebraic information.
-\end{itemize}
-\pause
-Prove that $Id:(\mathcal{C},D) \to(\mathcal{C},D_B) $ is an isometry.
+\begin{frame}{Implications}
+Maybe explains why quantum is able to achieve better results - locality (don't mention the words).
+This shows that quantum strategy can achieve better results.
 \end{frame}
 
+\section{Classifications of entanglement}
+\begin{frame}{Rank of the Coefficient Matrix}
+\begin{prop}
+\label{rank prop}
+Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by
+\begin{equation}
+M(\ket{\psi})=(a_{i,j}) \textrm{, where}\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle . 
+\end{equation}
+Also, set $S(\ket{\psi})=\{m\in \mathbb{N}: \ket{\psi}=\sum_{i=1}^m\ket{v_i w_i}, for \ket{v_i}, \ket{w_i} \in \mathbb{C}^n\}$.\\  Then, $rank(M(\ket{\psi}))=\textrm{min} (S(\ket{\psi})$.
+\end{prop}
+\pause
 
+\begin{corol}
+If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise, $\ket{\psi}$ is entangled.
+\end{corol}
+\end{frame}
+
+\begin{frame}{Strength of Entanglement}
+    \begin{prop}
+\label{entanglement-rank}
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}\bra{\varphi}$. Let the state of Bob's system after Alice has performed the measurement be denoted by $\ket{\theta}\bra{\theta}$. Then,
+\pause
+\begin{enumerate}
+    \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\varphi}$. In this situation, the state of Bob's system contains no information about Alice.
+    \pause
+    \item $rank(M(\ket{\psi}))=n$ if and only if $\ket{\psi}$ is maximally entangled. In this situation, the state of Bob's system contains perfect information about Alice.
+    \pause
+    \item If $1<rank(M(\ket{\psi}))<n$, then the state of Bob's system only contains some information about Alice.
+\end{enumerate}
+\end{prop}
+\end{frame}
+
+\begin{frame}{Post-measurement State Lemma}
+\begin{lemm}
+\label{end state lemma}
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob.  The shared density matrix is therefore $\rho = \ket{\psi}\bra{\psi}$. Then,
+\begin{enumerate}
+\item Say Alice makes a measurement and observes $\ket{\varphi}\bra{\varphi}$, then Bob's post-measurement state is $\ket{\theta}\bra{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T \cdot \overline{\ket{\varphi}}$, where $C$ is a constant.
+\item Similarly, if Bob makes a measurement and observes observes $\ket{\varphi}\bra{\varphi}$, then Alice's post-measurement state is $\ket{\theta}\bra{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T\cdot \overline{\ket{\varphi}}$, where $C$ is a constant.\\
+
+\end{enumerate}
+\end{lemm}
+\end{frame}
+\begin{frame}{Entanglement and Measuring}
+    \begin{prop}
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice makes a measurement with respect to a basis known to both herself and Bob.  If the transpose of the coefficient matrix preserves orthogonality, then Bob can determine Alice's measurement outcome with certainty. 
+\end{prop}
+\end{frame}
+% %--------------------SLIDE 7____________-----------------------
+% \begin{frame}
+% \frametitle{Algebraic Stability}
+
+
+% \pause
+
+% \begin{block}{}
+% \begin{theorem}[Isometry Theorem]
+% Let $P = (0,\infty)$, ${\mathcal{T}}(P) = ([0,\infty),+)$.  Then the interleaving metric $D$ equals the bottleneck metric $D_B$.
+% \end{theorem}
+% \end{block}
+
+% \pause
+% \smallskip
+
+% This suggests the following representation-theoretic analogue of the isometry theorem.
+% \pause
+
+% \smallskip
+
+% Let $P$ be a finite poset and let $K$ be a field.  Choose a full subcategory  $\mathcal{C} \subseteq A(P)$-mod, and let 
+% \begin{itemize}
+% \pause
+% \item $D$ be the interleaving metric restricted to $\mathcal{C}$, and
+% \pause
+% \item $D_B$ be a bottleneck metric on $\mathcal{C}$ which incorporates some algebraic information.
+% \end{itemize}
+% \pause
+% Prove that $Id:(\mathcal{C},D) \to(\mathcal{C},D_B) $ is an isometry.
+% \end{frame}
+
+
+\begin{frame}{Links}
+\begin{itemize}
+    \item Overleaf link to this presentation: \href{https://www.overleaf.com/read/nwtrbjbjkznx}{https://www.overleaf.com/read/nwtrbjbjkznx}
+    \item Overleaf link to this thesis:
+    \href{https://www.overleaf.com/read/xxvfvqzvcfjx}{https://www.overleaf.com/read/xxvfvqzvcfjx}
+    \item Github link to this presentation:
+    \href{https://github.com/YoWenqin/Math-Thesis-Presentation}{https://github.com/YoWenqin/Math-Thesis-Presentation}
+    \item Github link to this thesis:
+    \href{https://github.com/YoWenqin/Wenqin-Chen-Math-Honor-Thesis-Reformated}{https://github.com/YoWenqin/Wenqin-Chen-Math-Honor-Thesis-Reformated}
+    
+\end{itemize}
+\end{frame}
 
 \begin{frame}
 
 
 \begin{center}
 \huge{THANK YOU!}
-
 
 \end{center}
 
