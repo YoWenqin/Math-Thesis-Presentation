@@ -16,7 +16,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[handout, 10 pt]{beamer}
-
+% \documentclass[10 pt]{beamer}
 \mode<presentation> {
 
 % The Beamer class comes with a number of default slide themes
@@ -79,7 +79,6 @@
 }
 \usepackage{graphicx,amssymb,amsmath, mathtools, outlines}
 \usepackage{mathrsfs}
-% \usepackage{tikz, standalone, float, comment, tikz-cd}
 \usepackage{amscd, amsthm, amsfonts, braket, inputenc,xcolor,setspace, hyperref,comment, gensymb}
 
 
@@ -239,7 +238,7 @@ If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm
 \item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with equality if and only if }$\ket{v}=0$
 \pause
 \end{enumerate}
-for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$ denotes the conjugate of the complex number $z$.} 
+for all $\ket{v}$ and $\ket{w}$.
 
 \bigskip
 For example, $\mathbb{C}^n$ is an inner product space.
@@ -385,18 +384,22 @@ Recall Schrodinger's cat.
 
 
 \begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
- If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$ then, 
-$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i} .$$
+ If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$, then
+$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i}$$
+\pause
 Then
 \begin{eqnarray*}
     (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
     \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
+    \pause
     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
+    \pause
     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
+    \pause
     &=&\sum_i \braket{u_i|v}\ket{u_i}\\
     &=&\ket{v}.
 \end{eqnarray*}
-
+\pause
 Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
 \end{frame}
 
@@ -554,11 +557,23 @@ this can be {\emph{improved}} by making use of quantum mechanics!  The idea is t
 \begin{equation*}
     \ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})
 \end{equation*}
-
-
 $$0.75<0.85$$
 It's s simplified version of "CHSH experiment".
 \end{comment}
+\begin{frame}{Quantum Strategy:     $\ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$}
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.42]{"quantum strategy 1".png}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Quantum Strategy:     $\ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$}
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.42]{"quantum strategy 2".png}
+    \end{figure}
+\end{frame}
+
 \begin{frame}{Quantum Strategy:     $\ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$}
     \begin{figure}[h]
     \centering
