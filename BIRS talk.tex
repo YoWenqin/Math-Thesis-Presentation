@@ -303,9 +303,10 @@ Such is the motivation for the "bra-ket" notation, a convention in quantum mecha
 \end{itemize}
 \pause
 \begin{block}{Example}
-Given two vectors $\ket{\psi_1}\in\mathbb{C}^{d_1}$ and $\ket{\psi_2}\in\mathbb{C}^{d_2}$, the tensor product is given by
+Given two vectors $\ket{\psi_1}=\icol{0\\1}$ and $\ket{\psi_2}=\icol{\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}}$, the tensor product is given by
 \begin{equation}
-\ket{\psi_1} \otimes\ket{\psi_2} = \icol{ a_1\\ \vdots \\ a_{d_1}} \otimes \ket{\psi_2} = {\icol{ a_1\ket{\psi_2}\\ \vdots \\a_{d_1}\ket{\psi_2}}}_.
+\ket{\psi_1} \otimes\ket{\psi_2}
+= \icol{0\\1} \otimes \icol{\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}} = \icol{ 0\ket{\psi_2} \\ 1\ket{\psi_2}}=\icol{0\\0\\\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}}.
 \end{equation}
 \end{block}
 \end{frame}
