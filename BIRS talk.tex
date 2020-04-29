@@ -16,6 +16,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[handout, 10 pt]{beamer}
+% \documentclass{beamer}
 
 \mode<presentation> {
 
@@ -297,23 +298,54 @@ Given two vectors $\ket{\psi_1}\in\mathbb{C}^{d_1}$ and $\ket{\psi_2}\in\mathbb{
 \end{frame}
 
 \section{Measurements}
-% say there are four postulates in words but not in a mathematical sense.
-% only talk about measuring with respect to orthonormal basis
-% only briefly mention there are other measurements 
-% hermitian and square to themselves. example: orthonormal basis -> hermitian, square to themselves, and add up to I. example for computing proabbility and post-measurement state.
-% an example of bob distinguishing states with certainty from an orthonormal basis
-\textcolor{green}{don't mention observable on the slides (but mention in words), but just did as in preliminary section - orthonormal basis sum up to I}
+\begin{comment}
+Note the following description is not mathematically rigorous.
+\end{comment}
 
+\begin{frame}{Four postulates of quantum mechanics}
+    \begin{enumerate}
+        \item Any isolated physical system is a complete inner product space and can be completely described by unit vectors in the space.
+        \pause
+        \item The evolution of a closed quantum system through time is described by a unitary transformation.
+        \pause
+        \item Next slide.
+        \pause
+        \item If we are in a composite quantum system made up of two or mode distinct physical system, the state of the composite system is described by the tensor product of the inner product spaces of the component physical systems. 
+    \end{enumerate}
+\end{frame}
+
+\begin{comment}
+Recall Schrodinger's cat.
+\end{comment}
 \begin{frame}{Postulate 3 of Quantum Mechanics: Measurements}
-    A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
-    \begin{equation}
-        M=\sum_m m P_m
-    \end{equation}
-    where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable.
+\begin{itemize}
+    \item When {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed
+    \pause
+    \item Hence it's not necessarily subject to unitary evolution as in Postulate 2. 
+    \pause
+    \item Postulate 3 describes the effects of these measurements on a quantum system.
+    \pause
+    \item There are other types of measurements covered by the postulate, but we will only focus on measurement with respect to orthonormal basis.
+\end{itemize}
+% \pause
+%     A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+%     \begin{equation}
+%         M=\sum_m m P_m
+%     \end{equation}
+%     where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable.
+\end{frame}
+
+% hermitian and square to themselves. example: orthonormal basis -> hermitian, square to themselves, and add up to I. example for computing proabbility and post-measurement state.
+\begin{frame}{Measuring with an orthonormal basis}
+    \textcolor{green}{i'm confused at which formalism should i use exactly here.}
+    \textcolor{blue}{I would include Postulate 3 stated for P_m  Hermitian with P^2 = P.  Then on the next slide you can present the special case when P_M=u_m overlay for u_m in an orthonormal basis, as an example}
+    \begin{itemize}
+        \item Satisfies completeness relation:
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{(Continued)}
-%still keep this
+\textcolor{green}{still need to change this a bit}
     Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
     \begin{equation}
         p(m)=\braket{\psi|P_m|\psi}
@@ -324,30 +356,52 @@ Given two vectors $\ket{\psi_1}\in\mathbb{C}^{d_1}$ and $\ket{\psi_2}\in\mathbb{
     \end{equation}
 \end{frame}
 
+\begin{frame}{Satisfies completeness relation}
+ If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for $V$ and $\ket{v} \in V$ then, 
+$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i} .$$
+Then
+\begin{eqnarray*}
+    (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
+    \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
+    &=&\sum_i \braket{u_i|v}\ket{u_i}\\
+    &=&\ket{v}.
+\end{eqnarray*}
 
 
-\begin{frame}{Example}
-\begin{block}{}
-    Consider a projective measurement described by the observable: \begin{equation}
-    Z=\ket{0}\bra{0}-\ket{1}\bra{1}
-    \end{equation}
-    and a quantum state to be measured:
-        $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
-\end{block}
-\pause
-\begin{itemize}
-    \item $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1.
-    \pause
-    \item $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
-    \pause
-    \item Measurement of Z on $\ket{\psi}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
-\end{itemize}
+Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
 \end{frame}
 
-\begin{frame}{Example}
+% \begin{frame}{Example}
+% \begin{block}{}
+%     Consider a projective measurement described by the observable: \begin{equation}
+%     Z=\ket{0}\bra{0}-\ket{1}\bra{1}
+%     \end{equation}
+%     and a quantum state to be measured:
+%         $\ket{\psi}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$
+% \end{block}
+% \pause
+% \begin{itemize}
+%     \item $P_{+1}=\ket{0}\bra{0}$ is the projector onto the eigenspace of Z with eigenvalue 1.
+%     \pause
+%     \item $P_{-1}=\ket{1}\bra{1}$ is the projector onto the eigenspace of Z with eigenvalue -1.
+%     \pause
+%     \item Measurement of Z on $\ket{\psi}$ yields the outcome 1 with probability $\braket{\psi|0}\braket{0|\psi}=\frac{1}{2}$. Similarly, the outcome -1 has probability $\frac{1}{2}$.
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{Example: Orthogonal states can be reliably distinguished}
 \begin{block}{}
-Orthogonal states can be reliably distinguished. More precisely, suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob. She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring. If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
+\begin{itemize}
+    \item Suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob.
+    \pause
+    \item She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring.
+    \pause
+    \item If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
+\end{itemize}
 \end{block}
+\textcolor{green}{if we only talk about measuring w.r.t. orthonormal basis, the explanation here will be slightly different}
 \end{frame}
 
 
@@ -365,49 +419,115 @@ Orthogonal states can be reliably distinguished. More precisely, suppose Alice c
 % \end{itemize}
 % \end{frame}
 
+\begin{comment}
+if alice and bob can agree upon a key that's as long as the length of the message, then in a sense it's unbreakable. not saying precisely about one-time pad, but show an example of the transcription of hello
+\end{comment}
+\begin{frame}{One-time pad with an example}
+\begin{table}[h]
+\centering 
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+character & h & e & l & l & o \\ \hline \pause
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline \pause
+pad character & c & r & y & p & t \\ \hline \pause
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline \pause
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
+\end{tabular}}
+\caption{Alice's encoding process from "hello" to the ciphertext represented by a string of bits}
+\label{table: one-time pad encoding}
+\end{table}
+\pause
 
-\begin{frame}{One-time Pad: an Encryption Scheme}
-% if alice and bob can agree upon a key that's as long as the length of the message, then in a sense it's unbreakable. not saying precisely about one-time pad, but show an example of the transcription of hello
-\begin{itemize}
-    \item for a message $m \in \{0, 1\}^n$ using a key $k \in \{0, 1\}^n$
-    \pause
-    \item Encryption:
-    \begin{equation}
-    Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
-    \end{equation}
-    where $m_i \oplus k_i = m_i + k_i mod 2$.
-    \pause
-    \item Decryption:
-    \begin{equation}
-Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
-\end{equation}
-
-\end{itemize}
+\begin{table}[h] 
+\centering
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline \pause
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline \pause
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline \pause
+plaintext character & h & e & l & l & o \\ \hline
+\end{tabular}}
+\caption{Bob's decipher process from the ciphertext back to "hello"}
+\label{table: one-time pad decoding}
+\end{table}
+% \begin{itemize}
+%     \item for a message $m \in \{0, 1\}^n$ using a key $k \in \{0, 1\}^n$
+%     \pause
+%     \item Encryption:
+%     \begin{equation}
+%     Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
+%     \end{equation}
+%     where $m_i \oplus k_i = m_i + k_i mod 2$.
+%     \pause
+%     \item Decryption:
+%     \begin{equation}
+% Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
+% \end{equation}
+% \end{itemize}
 \end{frame}
 
+\begin{comment}
+In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  This also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game.
+\end{comment}
+
 \begin{frame}{A game}
-    rules:
+Alice and Bob work collaboratively to craft a strategy to maximize their team score.  Once they have agreed on a strategy, the game begins, at which point all their communication must cease.  The rules of the game are as follows:
+\pause
+\begin{enumerate}
+\item Alice is presented with an element $x$ of the set $\{0,1\}$.  This element will serve as her {\emph{question}}.
+\pause
+\item Alice responds to her question by choosing $a$ an element of {\emph{another}} copy of the set $\{0,1\}$.  We will call $a$ Alice's {\emph{answer}}. \pause
+\item Without seeing what has happened with Alice, Bob is also presented with an element $y$ of yet another copy of $\{0,1\}$. The element $y$ is Bob's question.
+\pause
+\item Bob too answers his question by choosing his answer $b$ from $\{0,1\}$.
+\end{enumerate}
+\pause
+Once both answers are picked, we are ready do see if Alice and Bob have won.  They win the game if and only if their answers satisfy the equation
+\begin{equation*}
+ a+b =xy\hspace{.1cm}(mod 2) 
+\end{equation*}
 \end{frame}
 
 \begin{frame}{Classical Strategy}
-    3/4 no computation needed
+\begin{itemize}
+    \item $f_A(x)=a$ and $f_B(y)=b$
+    \begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{"classical strategy".png}
+    \label{fig: classical strategy diagram}
+    \end{figure}
+    \item the maximum winning probability is $\frac{3}{4}$
+\end{itemize}
 \end{frame}
 
 % still playing the same game, but now have the tool of entangled state and measuring on different bases
 % use the picture and split it to 3 steps (entangled part->Alice->Bob)
 
-\begin{frame}{Quantum Strategy}
+\begin{comment}
+this can be {\emph{improved}} by making use of quantum mechanics!  The idea is that Alice and Bob can make use of a strategy where even though neither sees which question the other is asked, their answers are {\emph{correlated}}.
+\begin{equation*}
+    \ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})
+\end{equation*}
+
+
+$$0.75<0.85$$
+It's s simplified version of "CHSH experiment".
+\end{comment}
+\begin{frame}{Quantum Strategy:     $\ket{\psi_{AB}}=\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$}
     \begin{figure}[h]
     \centering
     \includegraphics[scale=0.42]{"quantum strategy diagram".png}
     \label{fig: quantum strategy diagram}
-\end{figure}
+    \end{figure}
 \end{frame}
 
-\begin{frame}{Implications}
-Maybe explains why quantum is able to achieve better results - locality (don't mention the words).
-This shows that quantum strategy can achieve better results.
-\end{frame}
+% \begin{frame}{Implications}
+% % Maybe explains why quantum is able to achieve better results - locality (don't mention the words).
+% % This shows that quantum strategy can achieve better results.
+% $$0.75<0.85$$
+% \end{frame}
 
 \section{Classifications of entanglement}
 \begin{frame}{Rank of the Coefficient Matrix}
