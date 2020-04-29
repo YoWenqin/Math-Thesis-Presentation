@@ -16,7 +16,6 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[handout, 10 pt]{beamer}
-% \documentclass{beamer}
 
 \mode<presentation> {
 
@@ -184,8 +183,9 @@ Another shocking thing about quantum mechanics is such phenomenon described by A
 \end{frame}
 
 \begin{comment}
-In cryptography, Alice and Bob try to communicate securely under the pryiing eyes of Eve. In my thesis, I investigate to apply quantum mechanics phenomenon such as entanglement to enhance security in cryptography.
+In cryptography, Alice and Bob try to communicate securely under the prying eyes of Eve. In my thesis, I investigate to apply quantum mechanics phenomenon such as entanglement to enhance security in cryptography.
 % So that's one motivation behind my thesis, to utilize entanglement to better secure message transmission from Alice to Bob under the prying eyes of Eve. This is particularly important considering that the current crypto systems such as RSA can be easily broken with quantum computers.
+emphasize it's a collaborative game between Alice and Bob against Eve
 \end{comment}
 
 \begin{frame}{Alice and Bob}
@@ -224,6 +224,7 @@ where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
 \end{itemize}
 \end{frame}
 
+%Same as inner product, except that it's conjugate symmetric.
 \begin{frame}
 
 \frametitle{Hermitian inner product}
@@ -242,47 +243,59 @@ for all $\ket{v}$ and $\ket{w}$.\footnote{Note that in the above, $\overline{z}$
 
 \bigskip
 For example, $\mathbb{C}^n$ is an inner product space.
+\begin{equation} \label{inner product defn}
+  \langle \ket{v},\ket{w}\rangle=\sum\limits_{i=1}^n \overline{v_i} w_i \textrm{, where }
+  \ket{v}=\icol{v_1\\ \vdots\\v_n} \textrm{ and }\ket{w}=\icol{w_1\\ \vdots\\w_n}.
+\end{equation}
 \end{frame}
 
-\begin{frame}{Adjoint}
+\begin{frame}{Adjoint and bra vector}
     If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, $\forall \ket{v} \in V, \forall \ket{w} \in W$,
 \begin{equation}
     \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle .
 \end{equation}
 \pause
 \begin{itemize}
-    \item Notice LHS inner product is taken in W, while RHS inner product is taken in V.
+    % \item Notice LHS inner product is taken in W, while RHS inner product is taken in V.
+    % \pause
+    \item When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$. i.e. $A^\dagger=(\overline{A})^T$.
     \pause
-    \item When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$.  
+    \item When the matrix $A$ is $\ket{v}$, $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$. Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
     \pause
-    \item In this case, we'll write $A^\dagger=(\overline{A})^T$.
-\end{itemize}
-\end{frame}
-
-\begin{comment}
-Such is the motivation for the "bra-ket" notation, a convention in quantum mechanics.
-\end{comment}
-\begin{frame}{One special case: Bra Vector}
-\begin{itemize}
-    \item When the matrix $A$ is a column vector $\ket{v}$, Then, clearly $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$.
-    \pause
-    \item Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
-    \pause
-    \item Then
+    \item
     \begin{equation}
     \bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
     \end{equation}
     where the dot on the left-hand side is just matrix multiplication.
     \pause
     \item We will write $\langle \ket{v},\ket{w}\rangle$ as $\braket{v|w}$ and refer to the inner product as the "bra-ket" of v and w.
-    % Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of v and w.
 \end{itemize}
 \end{frame}
+
+\begin{comment}
+Such is the motivation for the "bra-ket" notation, a convention in quantum mechanics.
+\end{comment}
+% \begin{frame}{One special case: Bra Vector}
+% \begin{itemize}
+%     \item When the matrix $A$ is a column vector $\ket{v}$, Then, clearly $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$.
+%     \pause
+%     \item Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
+%     \pause
+%     \item Then
+%     \begin{equation}
+%     \bra{v}\cdot \ket{w}=\sum_i \overline{v_i}w_i=\langle \ket{v},\ket{w}\rangle,
+%     \end{equation}
+%     where the dot on the left-hand side is just matrix multiplication.
+%     \pause
+%     \item We will write $\langle \ket{v},\ket{w}\rangle$ as $\braket{v|w}$ and refer to the inner product as the "bra-ket" of v and w.
+%     % Since the inner product agrees with matrix multiplication using this notation, as is customary we will write the inner product of $\ket{v}$ and $\ket{w}$ as $\braket{v|w}$, and refer to the inner product as the "bra-ket" of v and w.
+% \end{itemize}
+% \end{frame}
 
 \begin{frame}
 \frametitle{Tensor product}
 \begin{itemize}
-    \item The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces and their vectors. \textcolor{green}{Can I change it to this? The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces to form larger vector spaces.}
+    \item The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces to form larger vector spaces. 
     \pause
     \item The elements of $V \otimes W$ are linear combinations of "simple tensors" of the form $\ket{v} \otimes \ket{w}$, where $\ket{v} \in V, \ket{w} \in W$. 
     \pause
@@ -319,7 +332,7 @@ Recall Schrodinger's cat.
 \end{comment}
 \begin{frame}{Postulate 3 of Quantum Mechanics: Measurements}
 \begin{itemize}
-    \item When {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed
+    \item When {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed.
     \pause
     \item Hence it's not necessarily subject to unitary evolution as in Postulate 2. 
     \pause
@@ -327,6 +340,7 @@ Recall Schrodinger's cat.
     \pause
     \item There are other types of measurements covered by the postulate, but we will only focus on measurement with respect to orthonormal basis.
 \end{itemize}
+
 % \pause
 %     A projective measurement is described by an \textit{observable}, M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
 %     \begin{equation}
@@ -335,29 +349,42 @@ Recall Schrodinger's cat.
 %     where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable.
 \end{frame}
 
-% hermitian and square to themselves. example: orthonormal basis -> hermitian, square to themselves, and add up to I. example for computing proabbility and post-measurement state.
-\begin{frame}{Measuring with an orthonormal basis}
-    \textcolor{green}{i'm confused at which formalism should i use exactly here.}
-    \textcolor{blue}{I would include Postulate 3 stated for P_m  Hermitian with P^2 = P.  Then on the next slide you can present the special case when P_M=u_m overlay for u_m in an orthonormal basis, as an example}
-    \begin{itemize}
-        \item Satisfies completeness relation:
-    \end{itemize}
+% \begin{frame}{Frame Title}
+%         A projective measurement is described by M, a Hermitian operator on the state space of the sytem being observed. The observable has a spectral decomposition,
+%     \begin{equation}
+%         M=\sum_m m P_m
+%     \end{equation}
+%     where $P_m$ is the projector onto the eigenspace of M with eigenvalue m. The possible outcomes of the measurement correspond to the eigenvalues, m, of the observable. 
+    
+%     \begin{itemize}
+%         \item 
+%     \end{itemize}
+% \end{frame}
+
+
+\begin{frame}{Projective measurement}
+\begin{itemize}
+    \item Quantum measurements are described by a collection $\{M_m\}$ of measurement operators which are Hermitian and square to themselves. i.e. $M_m^2=M_m$ and $M_m^\dagger=M_m$.
+    \pause
+    \item These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. 
+    \pause
+    \item If the quantum system is in state $\ket{\psi}$ immediately prior to measurement, then the probability that outcome {\emph{m}} occurs is given by 
+    \begin{gather*}
+       p(m)=\bra{\psi}M_m \ket{\psi},
+    \end{gather*}
+    in which case the state of the system after the measurement is
+    \begin{gather*}
+        \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m \ket{\psi}}}.
+    \end{gather*}
+    \pause
+    \item Lastly, the measurement operators are required to satisfy the completeness equation $\sum\limits_m M_m =I$.   
+\end{itemize}
 \end{frame}
 
-\begin{frame}{(Continued)}
-\textcolor{green}{still need to change this a bit}
-    Upon measuring the state $\ket{\psi}$, the probability of getting result m is given by 
-    \begin{equation}
-        p(m)=\braket{\psi|P_m|\psi}
-    \end{equation}
-    Given that outcome m occurred, the state of the quantum system immediately after the measurement is 
-    \begin{equation}
-        \frac{P_m \ket{\psi}}{\sqrt{p(m)}}.
-    \end{equation}
-\end{frame}
 
-\begin{frame}{Satisfies completeness relation}
- If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for $V$ and $\ket{v} \in V$ then, 
+
+\begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
+ If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$ then, 
 $$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i} .$$
 Then
 \begin{eqnarray*}
@@ -369,8 +396,16 @@ Then
     &=&\ket{v}.
 \end{eqnarray*}
 
-
 Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
+\end{frame}
+
+\begin{frame}{Example (continued)}
+\begin{itemize}
+    \item Consider the orthonormal basis $\{\ket{u_m}\bra{u_m}\}$ as a family of measurement operators 
+    \pause
+    \item Squares to itself: 
+    $\ket{u_m}\bra{u_m} \ket{u_m}\bra{u_m}=\ket{u_m}\bra{u_m}$
+\end{itemize}
 \end{frame}
 
 % \begin{frame}{Example}
@@ -397,11 +432,19 @@ Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.
     \item Suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob.
     \pause
     \item She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring.
-    \pause
-    \item If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
 \end{itemize}
 \end{block}
-\textcolor{green}{if we only talk about measuring w.r.t. orthonormal basis, the explanation here will be slightly different}
+\pause
+
+If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob can determine the index i correctly with certainty.
+\pause
+\bigskip
+
+If Alice picked $\ket{\psi_i}$, the probability of observing $i$ and $j\neq i$ is given by:
+\begin{align}
+p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1^2=1\\
+p(j)=\braket{\psi_i | M_j |\psi_i}=\braket{\psi_i |\psi_j}\braket{\psi_j |\psi_i}=0^2=0
+\end{align}
 \end{frame}
 
 
