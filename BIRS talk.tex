@@ -271,7 +271,7 @@ $\mathbb{C}^n$ is a Hermitian inner product space.
 \pause
     % \item Notice LHS inner product is taken in W, while RHS inner product is taken in V.
     % \pause
-    \item When $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$. i.e. $A^\dagger=(\overline{A})^T$.
+    \item The adjoint of some $A \in M_{m.n}(\mathbb{C})$ is its conjugate transpose. i.e. $A^\dagger=(\overline{A})^T$.
     \pause
     \item When the matrix $A$ is $\ket{v}$, $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$. Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
     \pause
@@ -842,27 +842,88 @@ Consider a two-qubit state not within the characterization in the proposition ab
 \begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
  If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$, then
 $$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i}$$
-\pause
+
 Then
 \begin{eqnarray*}
     (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
     \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
-    \pause
+
     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
-    \pause
+
     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
-    \pause
+
     &=&\sum_i \braket{u_i|v}\ket{u_i}\\
     &=&\ket{v}.
 \end{eqnarray*}
-\pause
+
 Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
+\end{frame}
+
+\begin{frame}{Quantum Strategy Setup}
+\begin{gather*}
+    \ket{+}=\frac{1}{\sqrt{2}}(\ket{0}+\ket{1})\\
+    \ket{-}=\frac{1}{\sqrt{2}}(\ket{0}-\ket{1})\\
+\end{gather*}
+\begin{gather*}
+    \ket{v_1}=cos(\frac{\pi}{8})\ket{0}+sin(\frac{\pi}{8})\ket{1}\\
+    \ket{v_2}=-sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}\\  
+\end{gather*}
+
+\begin{gather*}    
+    \ket{w_1}=cos(\frac{\pi}{8})\ket{0}-sin(\frac{\pi}{8})\ket{1}\\
+    \ket{w_2}=sin(\frac{\pi}{8})\ket{0}+cos(\frac{\pi}{8})\ket{1}
+\end{gather*}    
+\end{frame}
+
+\begin{frame}{Quantum Strategy Winning Probability Computation}
+\begin{eqnarray*}
+p_{win|x=0,y=0}&=&p(a=0, b=0|x=0, y=0)+p(a=1, b=1|x=0, y=0)\\
+&=&\braket{0 v_1|\psi}\braket{\psi|0v_1}+\braket{1 v_2|\psi}\braket{\psi|1v_2}\\
+&=&|\braket{0 v_1|\psi}|^2 + |\braket{1 v_2|\psi}|^2\\
+&=&|\frac{1}{\sqrt{2}}(\braket{0v_1|00}+\braket{0v_1|11})|^2+|\frac{1}{\sqrt{2}}(\braket{1v_2|00}+\braket{1v_2|11})|^2\\
+&=&\frac{1}{2}|cos(\frac{\pi}{8})\braket{00|00}+sin(\frac{\pi}{8})\braket{01|00}+cos(\frac{\pi}{8})\braket{00|11}+cos(\frac{\pi}{8})\braket{01|11}|^2\\
+&+&\frac{1}{2}|-sin(\frac{\pi}{8})\braket{10|00}+cos(\frac{\pi}{8})\braket{11|00}-sin(\frac{\pi}{8})\braket{10|11}+cos(\frac{\pi}{8})\braket{11|11}|^2\\
+&=&cos^2(\frac{\pi}{8})
+\end{eqnarray*}
+\end{frame}
+
+\begin{frame}{Quantum Strategy Winning Probability Computation}
+\begin{eqnarray*}
+p_{win|x=0,y=1}&=&p(a=0, b=0|x=0, y=1)+p(a=1, b=1|x=0, y=1)\\
+&=&|\braket{0 w_1|\psi}|^2 + |\braket{1 w_2|\psi}|^2\\
+&=&(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2+(\frac{1}{\sqrt{2}}cos\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+\begin{eqnarray*}
+p_{win|x=1,y=0}&=&p(a=0, b=0|x=1, y=0)+p(a=1, b=1|x=1, y=0)\\
+&=&|\braket{+ v_1|\psi}|^2 + |\braket{- v_2|\psi}|^2\\
+&=&\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2+\frac{1}{2}(\frac{1}{\sqrt{2}}cos\frac{\pi}{8}+\frac{1}{\sqrt{2}}sin\frac{\pi}{8})^2\\
+&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+
+\end{frame}
+
+\begin{frame}{Quantum Strategy Winning Probability Computation}
+
+\begin{eqnarray*}
+p_{win|x=1,y=1}&=&p(a=1, b=0|x=1, y=1)+p(a=0, b=1|x=1, y=1)\\
+&=&|\braket{- w_1|\psi}|^2 + |\braket{+ w_2|\psi}|^2\\
+&=&\frac{1}{2}(cos\frac{\pi}{8}+sin\frac{\pi}{8})^2\\
+&=&cos^2 \frac{\pi}{8}
+\end{eqnarray*}
+So the probability of winning is the average of the four above:
+\begin{equation*}
+    p_{win}=\frac{1}{4}\sum_{x,y}p_{win|x,y}=cos^2 \frac{\pi}{8} \approx 0.85
+\end{equation*}
+
 \end{frame}
 
 \begin{frame}{Characterization of Orthogonality Preserving Matrices}
 \begin{prop} \label{orthogonality preserving character}
 $\{\ket{\psi}|M(\ket{\psi})^T$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all $\ket{\psi}$ in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthogonality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})^Tu|M(\ket{\psi}v}^T=0$.
 \end{prop}
+
 
 \end{frame}
 
