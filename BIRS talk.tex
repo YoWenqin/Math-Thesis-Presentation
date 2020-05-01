@@ -24,13 +24,13 @@
 % of all the themes, uncomment each in turn to see what they look like.
 
 %\usetheme{default}
-%\usetheme{AnnArbor}
+% \usetheme{AnnArbor}
 %\usetheme{Antibes}
 %\usetheme{Bergen}
-%\usetheme{Berkeley}
+% \usetheme{Berkeley}
 % \usetheme{Berlin}
 %\usetheme{Boadilla}
-%\usetheme{CambridgeUS}
+% \usetheme{CambridgeUS}
 %\usetheme{Copenhagen}
 %\usetheme{Darmstadt}
 %\usetheme{Dresden}
@@ -41,14 +41,14 @@
 %\usetheme{JuanLesPins}
 %\usetheme{Luebeck}
 %\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
+% \usetheme{Malmoe}
+% \usetheme{Marburg}
+% \usetheme{Montpellier}
+% \usetheme{PaloAlto}
+% \usetheme{Pittsburgh}
+% \usetheme{Rochester}
+% \usetheme{Singapore}
+% \usetheme{Szeged}
 \usetheme{Warsaw}
 
 % As well as themes, the Beamer class has a number of color themes
@@ -156,15 +156,26 @@ Thesis Advisors: Dr. David Meyer, Prof. Rajan Mehta
 
 \section{Motivation}
 \begin{comment}
+In the classical world, an electron is either in an excited state or ground state. in quantum, it's simultaneously in two states subject to some probability distribution. but when i observe it, it collapse to one or another one. then talk about the cat。
+
 The Austrian physicist Erwin Schrödinger proposed this thought experiment involving a cat in a sealed box, with a device of a 50\% chance of killing the cat in the next hour. In the classical world, the cat is either alive or dead after 1 hour. However, in the quantum physics, at the instance before the box was open, the cat is equally alive and dead at the same time. it's only when the box is open, we see a single definite state.
 
 The atoms form a world of possibilities rather than one of definite things or facts.
 \end{comment}
-\begin{frame}{Schrödinger's cat}
+
+\begin{frame}{Schrödinger's Cat}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.25]{"cat probability".png}
+    \caption{The cat with a device with a 50\% chance of killing the cat in the next hour}
+\end{figure}    
+\end{frame}
+
+\begin{frame}{Schrödinger's Cat}
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{"Schrodinger's cat".png}
-    \caption{The cat is a blur of probability (half alive and half dead) until we observe it}
+    \caption{The cat is a blur of probability (half alive and half dead) until we observe it and collapses to one definite state}
     \label{fig:Schrödinger's cat}
 \end{figure}    
 \end{frame}
@@ -172,12 +183,11 @@ The atoms form a world of possibilities rather than one of definite things or fa
 \begin{comment}
 Another shocking thing about quantum mechanics is such phenomenon described by Albert Einstein as the "spooky action at a distance". What's so spooky about it is that one event in the universe can instantaneously affect another event arbitrarily far away, which seems to imply faster than light communication. We now refer to as entanglement and will go over it in more detail later. 
 \end{comment}
-\begin{frame}{"Spooky action at a distance"}
+\begin{frame}{"spooky action at a distance"}
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.2]{"actual entanglement".jpg}
-    \caption{The First-Ever Photo of Quantum Entanglement captured by physicists at the University of Glasgow.}
-    \label{fig:actual entanglement}
+    \includegraphics[scale=0.45]{"cats and entanglement".png}
+    \caption{If the cats are entangled, only one can be alive once we open one box.}
 \end{figure}
 \end{frame}
 
@@ -206,58 +216,62 @@ Mathematically, a {\emph{qubit}} is a unit vector in a two-dimensional complex v
 
 \begin{itemize}
     \item Let $\ket{0} = \icol{1\\0}$, $\ket{1} = \icol{0\\1}$.
-    \pause
-    \item A \textbf{qubit} $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, 
-where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
-\pause
-\item i.e. a \textit{superposition} (complex linear combination) of $\ket{0}, \ket{1}$.
-\pause
     \begin{figure}[h]
     \centering
     \includegraphics[scale=0.3]{"Qubit".png}
     \caption{One physical interpretation of $\ket{0},\ket{1}$: the "ground" state and the "exited" state of an electron}
     \label{fig: qubit}
     \end{figure}
-\pause
-\item More generally, a \textbf{qudit} is a unit vector in ${\mathbb{C}}^d$.
-\end{itemize}
+    \pause
+    \item A \textbf{qubit} $\ket{\psi}$ is a two-dimensional "ket" vector, $\ket{\psi}=\alpha\ket{0}+\beta\ket{1}$, where $\alpha,\beta\in\mathbb{C}$, with $|\alpha|^2+|\beta|^2=1$.
+    \item i.e. a \textit{superposition} (complex linear combination) of $\ket{0}, \ket{1}$.
+    \pause
+    \item More generally, a \textbf{qudit} is a unit vector in ${\mathbb{C}}^d$.
+    \end{itemize}
 \end{frame}
 
 %Same as inner product, except that it's conjugate symmetric.
-\begin{frame}
+% \begin{frame}
 
-\frametitle{Hermitian inner product}
+% \frametitle{Hermitian inner product}
 
-If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
-\pause
-\begin{enumerate}
-\item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
-\pause
-\item $\langle\ket{v}, \ket{w}\rangle=\overline{\langle\ket{w}, \ket{v}\rangle}$
-\pause
-\item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with equality if and only if }$\ket{v}=0$
-\pause
-\end{enumerate}
-for all $\ket{v}$ and $\ket{w}$.
+% If $V$ is a complex vector space, a Hermitian inner product $\langle\hspace{.1cm},\hspace{.1cm}\rangle$ is a function from $V \times V$ to $\mathbb{C}$ which satisfies: 
+% \pause
+% \begin{enumerate}
+% \item $\langle\ket{v}, \sum_i \lambda_i \ket{w_i}\rangle=\sum_i \lambda_i \langle\ket{v}, \ket{w_i}\rangle$
+% \pause
+% \item $\langle\ket{v}, \ket{w}\rangle=\overline{\langle\ket{w}, \ket{v}\rangle}$
+% \pause
+% \item $\langle\ket{v}, \ket{v}\rangle \ge 0$ \textrm{ with equality if and only if }$\ket{v}=0$
+% \pause
+% \end{enumerate}
+% for all $\ket{v}$ and $\ket{w}$.
 
-\bigskip
-For example, $\mathbb{C}^n$ is an inner product space.
+% \bigskip
+% For example, $\mathbb{C}^n$ is a Hermitian inner product space.
+% \begin{equation} \label{inner product defn}
+%   \langle \ket{v},\ket{w}\rangle=\sum\limits_{i=1}^n \overline{v_i} w_i \textrm{, where }
+%   \ket{v}=\icol{v_1\\ \vdots\\v_n} \textrm{ and }\ket{w}=\icol{w_1\\ \vdots\\w_n}.
+% \end{equation}
+% \end{frame}
+
+\begin{frame}{Hermitian Inner Products and Adjoints}
+%     If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, $\forall \ket{v} \in V, \forall \ket{w} \in W$,
+% \begin{equation}
+%     \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle .
+% \end{equation}
+% \pause
+\begin{itemize}
+\item
+$\mathbb{C}^n$ is a Hermitian inner product space.
 \begin{equation} \label{inner product defn}
   \langle \ket{v},\ket{w}\rangle=\sum\limits_{i=1}^n \overline{v_i} w_i \textrm{, where }
   \ket{v}=\icol{v_1\\ \vdots\\v_n} \textrm{ and }\ket{w}=\icol{w_1\\ \vdots\\w_n}.
 \end{equation}
-\end{frame}
-
-\begin{frame}{Adjoint and bra vector}
-    If $L:V \to W$ is a linear transformation between two inner product spaces, the {\emph{adjoint of }}$L$, $L^\dagger$ is the linear transformation from $W$ to $V$ characterized by the property that, $\forall \ket{v} \in V, \forall \ket{w} \in W$,
-\begin{equation}
-    \langle\ket{w}, L\ket{v}\rangle=\langle L^\dagger \ket{w}, \ket{v}\rangle .
-\end{equation}
 \pause
-\begin{itemize}
     % \item Notice LHS inner product is taken in W, while RHS inner product is taken in V.
     % \pause
-    \item When $V={\mathbb{C}}^n, W={\mathbb{C}}^m$ and $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$. i.e. $A^\dagger=(\overline{A})^T$.
+    \item When $L(\ket{v})=A\ket{v}$ for some matrix $A \in M_{m.n}(\mathbb{C})$, the adjoint of $L$ is left multiplication by the conjugate transpose of $A$. i.e. $A^\dagger=(\overline{A})^T$.
     \pause
     \item When the matrix $A$ is $\ket{v}$, $\ket{v}^\dagger$ is just the conjugate transpose of the $\ket{v}$. Write $\bra{v}={\ket{v}}^\dagger$, read "bra v".
     \pause
@@ -292,7 +306,7 @@ Such is the motivation for the "bra-ket" notation, a convention in quantum mecha
 % \end{frame}
 
 \begin{frame}
-\frametitle{Tensor product}
+\frametitle{Tensor Product}
 \begin{itemize}
     \item The \textit{tensor product} is a way of {\emph{multiplying}} vector spaces to form larger vector spaces. 
     \pause
@@ -301,29 +315,33 @@ Such is the motivation for the "bra-ket" notation, a convention in quantum mecha
     \item If $\{\ket{a_1}, \ket{a_2}...\ket{a_m}\}, \{\ket{b_1},\ket{b_2}, ...\ket{b_n}\}$ are bases for V and W respectively, then the collection $\{\ket{a_i}\otimes\ket{b_j}\}$ is a basis for $V \otimes W$ for $1\leq i \leq m$ and $1 \leq j \leq n$.
 \end{itemize}
 \pause
-\begin{block}{Example}
-Given two vectors $\ket{\psi_1}=\icol{0\\1}$ and $\ket{\psi_2}=\icol{\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}}$, the tensor product is given by
+\begin{example}
+
+Given two vectors $\ket{\psi_1}=\icol{0\\1}$ and $\ket{\psi_2}=\icol{\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}}$, the tensor product is given by (sometimes written as $\ket{\psi_1 \psi_2}$)
 \begin{equation}
 \ket{\psi_1} \otimes\ket{\psi_2}
 = \icol{0\\1} \otimes \icol{\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}} = \icol{ 0\ket{\psi_2} \\ 1\ket{\psi_2}}=\icol{0\\0\\\frac{1}{\sqrt{3}}\\\frac{\sqrt{2}}{\sqrt{3}}}.
 \end{equation}
-\end{block}
+\end{example}
 \end{frame}
 
 \section{Measurements}
 \begin{comment}
+The postulates of quantum mechanics were derived from a long process of trial and error and establish a mathematical framework for the development of physical theories.
 Note the following description is not mathematically rigorous.
 \end{comment}
 
-\begin{frame}{Four postulates of quantum mechanics}
+\begin{frame}{Four Postulates of Quantum Mechanics}
+
     \begin{enumerate}
-        \item Any isolated physical system is a complete inner product space and can be completely described by unit vectors in the space.
+        \item An isolated physical system comes with a Hilbert space, and its state is a unit vector in this state space. 
         \pause
         \item The evolution of a closed quantum system through time is described by a unitary transformation.
         \pause
         \item Next slide.
         \pause
-        \item If we are in a composite quantum system made up of two or mode distinct physical system, the state of the composite system is described by the tensor product of the inner product spaces of the component physical systems. 
+        \item When two particles interact, their systems get multiplied into a composite system.  The state space for this composite system is the tensor product of their state spaces, and their composite state is a unit vector in this space. 
+ 
     \end{enumerate}
 \end{frame}
 
@@ -332,13 +350,14 @@ Recall Schrodinger's cat.
 \end{comment}
 \begin{frame}{Postulate 3 of Quantum Mechanics: Measurements}
 \begin{itemize}
-    \item When {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed.
-    \pause
-    \item Hence it's not necessarily subject to unitary evolution as in Postulate 2. 
-    \pause
+    % \item When {\emph{any}} external object (including measuring equipment) observes a quantum system, the quantum system is no longer closed.
+    % \pause
+    % \item Hence it's not necessarily subject to unitary evolution as in Postulate 2. 
+    % \pause
     \item Postulate 3 describes the effects of these measurements on a quantum system.
     \pause
-    \item There are other types of measurements covered by the postulate, but we will only focus on measurement with respect to orthonormal basis.
+    \item Coin toss analogy.
+    \item There are other types of measurements covered by the postulate, but we will only focus on projective measurement.
 \end{itemize}
 
 % \pause
@@ -362,9 +381,9 @@ Recall Schrodinger's cat.
 % \end{frame}
 
 
-\begin{frame}{Projective measurement}
+\begin{frame}{Projective Measurement}
 \begin{itemize}
-    \item Quantum measurements are described by a collection $\{M_m\}$ of measurement operators which are Hermitian and square to themselves. i.e. $M_m^2=M_m$ and $M_m^\dagger=M_m$.
+    \item Projective quantum measurements are described by a collection $\{M_m\}$ of measurement operators which are Hermitian, square to themselves and sum up to I. i.e. $M_m^2=M_m$, $M_m^\dagger=M_m$ and $\sum\limits_m M_m =I$.
     \pause
     \item These operators act on the state space of the system being measured, and the index {\emph{m}} refers to the measurement outcomes that may occur in the experiment. 
     \pause
@@ -372,43 +391,50 @@ Recall Schrodinger's cat.
     \begin{gather*}
        p(m)=\bra{\psi}M_m \ket{\psi},
     \end{gather*}
-    in which case the state of the system after the measurement is
+    \pause
+    \item The state of the system after the measurement is
     \begin{gather*}
         \frac{M_m \ket{\psi}}{\sqrt{\bra{\psi}M_m \ket{\psi}}}.
     \end{gather*}
-    \pause
-    \item Lastly, the measurement operators are required to satisfy the completeness equation $\sum\limits_m M_m =I$.   
 \end{itemize}
 \end{frame}
 
 
 
-\begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
- If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$, then
-$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i}$$
-\pause
-Then
-\begin{eqnarray*}
-    (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
-    \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
-    \pause
-    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
-    \pause
-    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
-    \pause
-    &=&\sum_i \braket{u_i|v}\ket{u_i}\\
-    &=&\ket{v}.
-\end{eqnarray*}
-\pause
-Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
-\end{frame}
+% \begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
+%  If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$, then
+% $$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i}$$
+% \pause
+% Then
+% \begin{eqnarray*}
+%     (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
+%     \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
+%     \pause
+%     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
+%     \pause
+%     &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
+%     \pause
+%     &=&\sum_i \braket{u_i|v}\ket{u_i}\\
+%     &=&\ket{v}.
+% \end{eqnarray*}
+% \pause
+% Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
+% \end{frame}
 
-\begin{frame}{Example (continued)}
+\begin{frame}{Example: Measuring On an Orthonormal Basis}
 \begin{itemize}
-    \item Consider the orthonormal basis $\{\ket{u_m}\bra{u_m}\}$ as a family of measurement operators 
+    \item Consider an orthonormal basis of $\mathbb{C}^n, \{\ket{u_m}\}=\{\ket{u_1},\hdots, \ket{u_n}\}$. Let our family of measurement operators be $\{M_1, M_2, \hdots, M_n\}$, where $M_m=\ket{u_m}\bra{u_m}$
     \pause
     \item Squares to itself: 
     $\ket{u_m}\bra{u_m} \ket{u_m}\bra{u_m}=\ket{u_m}\bra{u_m}$
+    \pause
+    \item  Hermitian: $(\ket{u_m}\bra{u_m})^\dagger=\ket{u_m}\bra{u_m}$
+    \pause
+    \item Sum up to I: $\sum_m \ket{u_m}\bra{u_m}$
+    \pause
+    \item $p(m)=\bra{\psi}\ket{u_m}\bra{u_m}\ket{\psi}=|\braket{\psi|u_m}|^2$
+    \pause
+    \item Post-measurement state is $\ket{u_m}$
 \end{itemize}
 \end{frame}
 
@@ -430,7 +456,7 @@ Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.
 % \end{itemize}
 % \end{frame}
 
-\begin{frame}{Example: Orthogonal states can be reliably distinguished}
+\begin{frame}{Example: Orthogonal States Can Be Reliably Distinguished}
 \begin{block}{}
 \begin{itemize}
     \item Suppose Alice chooses a state $\ket{\psi_i}$ from some fixed set of states known to both herself and to Bob.
@@ -444,13 +470,31 @@ If the collection of states $\{\ket{\psi_j}\}_{j=1}^n$ is orthonormal, then Bob 
 \pause
 \bigskip
 
-If Alice picked $\ket{\psi_i}$, the probability of observing $i$ and $j\neq i$ is given by:
+If Alice picked $\ket{\psi_i}$, the probability of observing $i$ and $j\neq i$ are given by:
 \begin{align}
-p(i)=\braket{\psi_i | M_i |\psi_i}=\braket{\psi_i |\psi_i}\braket{\psi_i |\psi_i}=1^2=1\\
-p(j)=\braket{\psi_i | M_j |\psi_i}=\braket{\psi_i |\psi_j}\braket{\psi_j |\psi_i}=0^2=0
+p(i)=\braket{\psi_i | M_i |\psi_i}=|\braket{\psi_i |\psi_i}|^2=1^2=1\\
+p(j)=\braket{\psi_i | M_j |\psi_i}=|\braket{\psi_j |\psi_i}|^2=0^2=0
 \end{align}
 \end{frame}
 
+\begin{frame}{Example: Non-orthogonal States Cannot be Reliably Distinguished}
+\begin{itemize}
+    \item Alice select one of states $\ket{\psi_1}=\ket{0}$ and  $\ket{\psi_2}=\frac{\ket{0}+\ket{1}}{\sqrt{2}}$.
+    \pause
+    \item Bob uses measurement: $M_1=\ket{0}\bra{0}, M_2=\ket{1}\bra{1}$
+    \pause
+    \item If Alice prepares $\ket{\psi_1}$, then $p(1)=\braket{0 |0}\braket{0|0}=1$, so Bob picks the correct index.
+    \pause
+    \item However, if Alice prepares $\ket{\psi_2}$, then the probabilities of the measurement outcomes being $1$ and $2$ respectively are given by:
+    \begin{eqnarray}
+    & &p(1)=|\braket{0|\psi_2}|^2=|\frac{\braket{0|0}+\braket{0|1}}{\sqrt{2}}|^2=\frac{1}{2}\\
+    & &p(2)=|\braket{1|\psi_2}|^2={\frac{1}{2}}.
+    \end{eqnarray}
+    \item This means if Bob's measurement outcome is $2$, Alice must have prepared $\ket{\psi_2}$, so Bob will be able to guess correctly with certainty.
+    \pause
+    \item But if the outcome is 1, Bob cannot determine.
+\end{itemize}
+\end{frame}
 
 \section{Classical Cryptography vs Quantum Cryptography}
 % \begin{frame}{Goals of Cryptography: Correctness and Security}
@@ -469,57 +513,45 @@ p(j)=\braket{\psi_i | M_j |\psi_i}=\braket{\psi_i |\psi_j}\braket{\psi_j |\psi_i
 \begin{comment}
 if alice and bob can agree upon a key that's as long as the length of the message, then in a sense it's unbreakable. not saying precisely about one-time pad, but show an example of the transcription of hello
 \end{comment}
-\begin{frame}{One-time pad with an example}
+
+\begin{frame}{One-time Pad With an Example}
 \begin{table}[h]
 \centering 
 \resizebox{\columnwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-character & h & e & l & l & o \\ \hline \pause
-plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline \pause
-pad character & c & r & y & p & t \\ \hline \pause
-one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline \pause
-ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline
+character & h & e & l & l & o \pause \\ \hline 
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \pause \\ \hline
+pad character & c & r & y & p & t \pause \\ \hline
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \pause \\ \hline 
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \pause \\ \hline
 \end{tabular}}
 \caption{Alice's encoding process from "hello" to the ciphertext represented by a string of bits}
 \label{table: one-time pad encoding}
 \end{table}
-\pause
+\end{frame}
 
+\begin{frame}{One-time Pad: Bob's Decipher Process}
 \begin{table}[h] 
 \centering
 \resizebox{\columnwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
-ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \\ \hline \pause
-one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \\ \hline \pause
-plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \\ \hline \pause
+ciphertext & 0000 1011 & 0001 0111 & 0001 0101 & 0001 1100 & 0001 1011 \pause \\ \hline 
+one-time pad & 0110 0011 & 0111 0010 & 0111 1001 & 0111 0000 & 0111 0100 \pause \\ \hline 
+plaintext & 0110 1000 & 0110 0101 & 0110 1100 & 0110 1100 & 0110 1111 \pause \\ \hline
 plaintext character & h & e & l & l & o \\ \hline
 \end{tabular}}
 \caption{Bob's decipher process from the ciphertext back to "hello"}
 \label{table: one-time pad decoding}
 \end{table}
-% \begin{itemize}
-%     \item for a message $m \in \{0, 1\}^n$ using a key $k \in \{0, 1\}^n$
-%     \pause
-%     \item Encryption:
-%     \begin{equation}
-%     Enc(k,m)=(m \oplus k)=(m_1 \oplus k_1, m_2 \oplus k_2, \hdots, m_n \oplus k_n)=(e_1, \hdots, e_n)=e
-%     \end{equation}
-%     where $m_i \oplus k_i = m_i + k_i mod 2$.
-%     \pause
-%     \item Decryption:
-%     \begin{equation}
-% Dec(k, e)=e \oplus k = (e_1 \oplus k_1, e_2 \oplus k_2, \hdots, e_n \oplus k_n)
-% \end{equation}
-% \end{itemize}
 \end{frame}
 
 \begin{comment}
 In many collaborative games, two players using a {\emph{quantum strategy}} can achieve a higher winning probability than if they use a {\emph{classical strategy}}. Because of this, many probabilistic games can be thought of as tests for entanglement.  This also illustrates why one might try to make use of quantum mechanics in cryptography.  We illustrate this phenomenon with an example of a guessing game.
 \end{comment}
 
-\begin{frame}{A game}
+\begin{frame}{A Game}
 Alice and Bob work collaboratively to craft a strategy to maximize their team score.  Once they have agreed on a strategy, the game begins, at which point all their communication must cease.  The rules of the game are as follows:
 \pause
 \begin{enumerate}
@@ -538,15 +570,26 @@ Once both answers are picked, we are ready do see if Alice and Bob have won.  Th
 \end{frame}
 
 \begin{frame}{Classical Strategy}
-\begin{itemize}
-    \item $f_A(x)=a$ and $f_B(y)=b$
+% \begin{itemize}
+%     \item $f_A(x)=a$ and $f_B(y)=b$
     \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{"classical strategy".png}
+    \includegraphics[scale=0.2]{"classical strategy".png}
     \label{fig: classical strategy diagram}
     \end{figure}
-    \item the maximum winning probability is $\frac{3}{4}$
-\end{itemize}
+%     \item the maximum winning probability is $\frac{3}{4}$
+% \end{itemize}
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+ $p(a,b|x,y)$ & \begin{tabular}[c]{@{}l@{}}a=0 if x=0\\ a=1 if x=1\end{tabular} & \begin{tabular}[c]{@{}l@{}}a=1 if x=0\\ a=0 if x=1\end{tabular} & a=1 & a=0 \\ \hline
+\begin{tabular}[c]{@{}l@{}}b=0 if y=0\\ b=1 if y=1\end{tabular} & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
+\begin{tabular}[c]{@{}l@{}}b=1 if y=0\\ b=0 if y=1\end{tabular} & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ \\ \hline
+b=1 & $\frac{1}{4}$ & $\frac{3}{4}$ & $\frac{3}{4}$ & $\frac{1}{4}$ \\ \hline
+b=0 & $\frac{3}{4}$ & $\frac{1}{4}$ & $\frac{1}{4}$ & $\frac{3}{4}$ \\ \hline
+\end{tabular}
+\end{table}
 \end{frame}
 
 % still playing the same game, but now have the tool of entangled state and measuring on different bases
@@ -582,17 +625,40 @@ It's s simplified version of "CHSH experiment".
     \end{figure}
 \end{frame}
 
-% \begin{frame}{Implications}
-% % Maybe explains why quantum is able to achieve better results - locality (don't mention the words).
-% % This shows that quantum strategy can achieve better results.
-% $$0.75<0.85$$
-% \end{frame}
-
 \section{Classifications of entanglement}
+
+\begin{frame}{Entanglement}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{"actual entanglement".jpg}
+    \caption{The First-Ever Photo of Quantum Entanglement captured by physicists at the University of Glasgow.}
+\end{figure}    
+\end{frame}
+
+
+\begin{comment}
+Informally, when two states are entangled, one cannot be described physically independent of the other.  In practice, we may think of entangled states as being {\emph{correlated}} in the sense that information about one of them is in fact, information about both of them. 
+\end{comment}
+\begin{frame}{Definition of Entanglement}
+ \begin{definition}\label{definition: entanglement with state vector}
+We say that a state of a composite system is \textit{separable} if it is the tensor product of two vectors in its component systems. Otherwise, the state is \textit{entangled}.
+\end{definition}   
+\pause
+
+\begin{example} \label{example: entangled state}
+Consider the two qubit state 
+\begin{equation}
+    \ket{\psi}=\frac{\ket{00}+\ket{11}}{\sqrt{2}}.
+\end{equation}
+
+There are no single qubit states $\ket{a}, \ket{b}$ such that $\ket{\psi}=\ket{a}\otimes \ket{b}$, hence $\ket{\psi}$ is entangled.
+\end{example}
+\end{frame}
+
 \begin{frame}{Rank of the Coefficient Matrix}
-\begin{prop}
+\begin{prop} [C., M]
 \label{rank prop}
-Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$, and let $S=\{\ket{e_i}\}$ be the standard basis for $\mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by
+Let $\ket{\psi}$ be a state in $\mathbb{C}^n \otimes \mathbb{C}^n$. Define the coefficient matrix $M(\ket{\psi})$ by
 \begin{equation}
 M(\ket{\psi})=(a_{i,j}) \textrm{, where}\ket{\psi}=\sum\limits_{i,j}a_{i,j}|e_i e_j\rangle . 
 \end{equation}
@@ -605,13 +671,42 @@ If $rank(M(\ket{\psi}))=1$, then the state $\ket{\psi}$ is separable. Otherwise,
 \end{corol}
 \end{frame}
 
+\begin{frame}{Our Task Now}
+
+\begin{block}{Recall a Previous Example}
+\begin{itemize}
+    \item Suppose Alice chooses a state $\ket{\varphi_i}$ from some fixed set of states known to both herself and to Bob.
+    \item She gives the state to Bob, whose task is to identify the index $i$ from the state Alice has given him by measuring.
+\end{itemize}
+\end{block}
+\pause
+
+    \textbf{Our task now}: 
+    \begin{itemize}
+        \item Alice and Bob share a known composite 2-qudit state $\ket{\psi}$.
+        \item Alice measures w.r.t an orthonormal basis $\{\ket{\varphi_i}\}$ that Bob knows.
+        \item After Alice has made a measurement, the task is for Bob to infer Alice's outcome by measuring his part of the system. 
+    \end{itemize}
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.35]{"entangled to alice and bob".png}
+\end{figure} 
+  
+\end{frame}
+
 \begin{frame}{Strength of Entanglement}
-    \begin{prop}
+\begin{definition} [C., M] \label{def: maximally entangled}
+ Let $\ket{\psi}$ be a state in ${\mathbb{C}}^2 \otimes \mathbb{C}^n$.  Then, the entanglement degree of $\ket{\psi}$ is $rank(M(\ket{\psi}))$.  If the entanglement degree of $\ket{\psi}$ is $n$, we say $\ket{\psi}$ is maximally entangled.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Strength of Entanglement (Continued)}
+\begin{prop} [C., M]
 \label{entanglement-rank}
-Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}\bra{\varphi}$. Let the state of Bob's system after Alice has performed the measurement be denoted by $\ket{\theta}\bra{\theta}$. Then,
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice first makes a measurement and observes an outcome with end state $\ket{\varphi}$. Let the state of Bob's system after Alice has performed the measurement be denoted by $\ket{\theta}$. Then,
 \pause
 \begin{enumerate}
-    \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}\bra{\theta}$ is a constant matrix that doesn't depend on $\ket{\varphi}$. In this situation, the state of Bob's system contains no information about Alice.
+    \item $rank(M(\ket{\psi}))=1$ if and only if $\ket{\theta}$ is a constant matrix that doesn't depend on $\ket{\varphi}$. In this situation, the state of Bob's system contains no information about Alice.
     \pause
     \item $rank(M(\ket{\psi}))=n$ if and only if $\ket{\psi}$ is maximally entangled. In this situation, the state of Bob's system contains perfect information about Alice.
     \pause
@@ -620,54 +715,103 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state repr
 \end{prop}
 \end{frame}
 
-\begin{frame}{Post-measurement State Lemma}
-\begin{lemm}
-\label{end state lemma}
-Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob.  The shared density matrix is therefore $\rho = \ket{\psi}\bra{\psi}$. Then,
-\begin{enumerate}
-\item Say Alice makes a measurement and observes $\ket{\varphi}\bra{\varphi}$, then Bob's post-measurement state is $\ket{\theta}\bra{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T \cdot \overline{\ket{\varphi}}$, where $C$ is a constant.
-\item Similarly, if Bob makes a measurement and observes observes $\ket{\varphi}\bra{\varphi}$, then Alice's post-measurement state is $\ket{\theta}\bra{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T\cdot \overline{\ket{\varphi}}$, where $C$ is a constant.\\
+\begin{frame}{Example of $1<rank(M(\ket{\psi}))<n$}
+Say Alice and Bob share a state $$\ket{\psi}=\frac{1}{2\sqrt{2}}(\ket{e_1 e_1}+\ket{e_2 e_3}+\ket{e_3 e_1}+\ket{e_3 e_3})$$. Then the coefficient matrix is $$M(\ket{\psi})=
+\frac{1}{\sqrt{C}}\begin{pmatrix}
+1 && 0 && 1\\
+0 && 0 && 0\\
+0 && 1 && 1\\
+\end{pmatrix}$$ 
 
+\pause
+\begin{itemize}
+    \item Say Alice measures w.r.t an orthonormal basis that consists of $\ket{\varphi_1}=\ket{e_1}, \ket{\varphi_2}=\frac{1}{\sqrt{2}}(-\ket{e_2}+\ket{e_3}), \ket{\varphi_3}=\frac{1}{\sqrt{2}}(-\ket{e_2}-\ket{e_3}) $
+    \pause
+    \item Mapping from Alice's measurement outcome$\ket{\psi_i}$ to post-measurement state for Bob $\ket{\theta_i}$:
+    \begin{itemize}
+        \item $\ket{\varphi_1} \mapsto \ket{\theta_1}=\ket{e_1}$
+        \item $\ket{\varphi_2} \mapsto \ket{\theta_2}=\ket{e_1}$
+        \item $\ket{\varphi_3} \mapsto \ket{\theta_3}=\frac{1}{\sqrt{5}}(-\ket{e_1}-2\ket{e_3})$
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Post-measurement State Lemma}
+\begin{lemm} [C., M]
+\label{end state lemma}
+Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Then,
+\begin{enumerate}
+\item Say Alice makes a measurement and observes $\ket{\varphi}$, then Bob's post-measurement state is $\ket{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T \ket{\Bar{\varphi}}$ and $C$ is a constant.
+\item Similarly, if Bob makes a measurement and observes $\ket{\varphi}$, then Alice's post-measurement state is $\ket{\theta}$, where $\ket{\theta}=\frac{1}{\sqrt{C}}M(\ket{\psi})^T \ket{\Bar{\varphi}}$ and $C$ is a constant.
 \end{enumerate}
 \end{lemm}
+\pause
+
+\begin{prop}
+Say Alice and Bob share a two-qudit quantum state $\ket{\psi}$. Alice can never observe an outcome corresponding to an end state $\ket{u}$, where $\ket{\Bar{u}} \in Nul(M(\ket{\psi})^T)$.
+\end{prop}  
+
 \end{frame}
+
+
+
 \begin{frame}{Entanglement and Measuring}
-    \begin{prop}
+\begin{itemize}
+    \item Notice Bob doesn't have {\emph{access}} to his state vector without making a  {\emph{measurement}}.
+    \pause
+    \item Two reasons why Bob may fail to know the result of Alice's measurement.
+    \begin{enumerate}
+        \item $\ket{\psi}$ may not be maximally entangled, so Alice's and Bob's states after Alice's measurement are not perfectly correlated.
+        \pause
+        \item Even though their end states are perfectly correlated, uncertainty is introduced when Bob tries to {\emph{access}} his end state by measuring.
+    \end{enumerate}
+    
+    % \item By the lemma, if the transpose of the coefficient matrix $M_{\ket{\psi}}$ preserves orthogonality (and has full rank), Bob can measure with respect to the basis $\{M_{\ket{\psi}}^T \ket{\psi_i}\}_{i=1}^n$, which is automatically orthonormal. Thus, by measuring with respect to {\emph{this orthonormal basis}} he will be able to infer which outcome Alice observed by simply applying the inverse of the transpose of the coefficient matrix to the his end state. 
+\end{itemize}
+\pause
+%  Specifically, in our previous setup, Alice chooses a state from an orthonormal basis $\{\ket{\varphi_i}\}_{i=1}^n$ known to both herself and to Bob. She then gives the state to Bob, whose task is to identify the index of that state. Our task is different. 
+
+\begin{prop}[C., M]
 Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state representing a composite system of Alice and Bob. Say Alice makes a measurement with respect to a basis known to both herself and Bob.  If the transpose of the coefficient matrix preserves orthogonality, then Bob can determine Alice's measurement outcome with certainty. 
 \end{prop}
 \end{frame}
-% %--------------------SLIDE 7____________-----------------------
-% \begin{frame}
-% \frametitle{Algebraic Stability}
 
+\begin{frame}{Characterization of All "Good" States in $\mathbb{C}^2 \otimes \mathbb{C}^2$}
+We want that
+if $\braket{u|v}=0$, then $\braket{M(\ket{\psi}^Tu|M(\ket{\psi})^Tv)}=0$.    
 
-% \pause
+\begin{corollary}
+$\ket{\psi}=\frac{1}{\sqrt{2}}(a\ket{00}+(-e^{i\theta})\Bar{b}\ket{01}+b\ket{10}+e^{i\theta}\Bar{a}\ket{11})$, where $|a|^2+|b|^2=1$ is a characterization of all shared two-qubit states in $\mathbb{C}^2 \otimes \mathbb{C}^2$ where Bob can determine Alice's measurement outcome with certainty.
 
-% \begin{block}{}
-% \begin{theorem}[Isometry Theorem]
-% Let $P = (0,\infty)$, ${\mathcal{T}}(P) = ([0,\infty),+)$.  Then the interleaving metric $D$ equals the bottleneck metric $D_B$.
-% \end{theorem}
-% \end{block}
+% such that if $\braket{u|v}=0$, then $\braket{M(\ket{\psi}u|M(\ket{\psi})v)}=0$.
+\end{corollary}
+\end{frame}
 
-% \pause
-% \smallskip
+\begin{frame}{Example}
 
-% This suggests the following representation-theoretic analogue of the isometry theorem.
-% \pause
-
-% \smallskip
-
-% Let $P$ be a finite poset and let $K$ be a field.  Choose a full subcategory  $\mathcal{C} \subseteq A(P)$-mod, and let 
-% \begin{itemize}
-% \pause
-% \item $D$ be the interleaving metric restricted to $\mathcal{C}$, and
-% \pause
-% \item $D_B$ be a bottleneck metric on $\mathcal{C}$ which incorporates some algebraic information.
-% \end{itemize}
-% \pause
-% Prove that $Id:(\mathcal{C},D) \to(\mathcal{C},D_B) $ is an isometry.
-% \end{frame}
-
+\begin{block}{}
+Consider a two-qubit state not within the characterization in the proposition above such as $\ket{\psi}=\frac{1}{\sqrt{3}}(\ket{00}+\ket{01}+\ket{10})$. Say Alice chooses to measure on the standard basis $\{\ket{0}, \ket{1}\}$.
+\end{block}
+\begin{itemize}
+    \item Bob will not be able to measure on $\{M(\ket{\psi})\ket{0}, M(\ket{\psi})\ket{1}\}=\{\begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+\frac{1}{\sqrt{3}}
+\end{pmatrix},\begin{pmatrix}
+\frac{1}{\sqrt{3}}\\
+0
+\end{pmatrix}\}$
+\item So he will have to measure on $\{M(\ket{\psi})\ket{0}, (M(\ket{\psi})\ket{0})^\perp \}$ or $\{(M(\ket{\psi})\ket{1})^\perp, M(\ket{\psi})\ket{1} \}$.
+\end{itemize}
+\end{frame}
+\begin{frame}{Application to One-time Pad}
+    \begin{enumerate}
+    \item Bob creates a series of \textit{good} 2-qudit states $L={\ket{\psi_1}, \ket{\psi_2}, \hdots, \ket{\psi_m}}$, where $\ket{\psi_i} \in \mathbb{C}^n \otimes \mathbb{C}^n$. He sends the left qudit of each state to Alice via a quantum communication channel and keep the right side to himself.
+    \pause
+    \item Via a classical communication channel that doesn't have to be secure, Alice notify Bob in order the set of orthonormal bases that she is going to make measurements with. In other words, for each $\ket{\psi_i}$, Alice randomly chooses an orthonormal basis $B_i=\{\ket{b_1}, \ket{b_2}, \hdots, \ket{b_n}\}$ and sends the elements in the basis in order to Bob.
+    \pause
+    \item For each qudit received from L, Alice makes a measurement and saves her result locally. With the knowledge of L and $B_1, B_2, \hdots, B_m$, Bob will be able to infer Alice's measurement result by measuring with respect to basis $\{M_{\ket{\psi_i}}^T \ket{b_1}, M_{\ket{\psi_i}}^T \ket{b_2}, \hdots, M_{\ket{\psi_i}}^T \ket{b_n}\}$. He saves the result for each $\ket{\psi_i}$ and in the end get an m-digit long key that can be used for one-time pad.
+\end{enumerate}
+\end{frame}
 
 \begin{frame}{Links}
 \begin{itemize}
@@ -693,21 +837,34 @@ Let $\ket{\psi} \in \mathbb{C}^n \otimes \mathbb{C}^{n}$ be a quantum state repr
 \end{frame}
 
 
-
-
-
-
-
-
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{frame}{Example: $\{M_m\}$ as an orthonormal basis }
+ If $\{\ket{u_1}, \ket{u_2}, ...\ket{u_k}\}$ is an orthonormal basis for ${\mathbb{C}}^k$ and $\ket{v} \in {\mathbb{C}}^k$, then
+$$\ket{v}=\sum\limits_i\braket{u_i|v}\ket{u_i}$$
+\pause
+Then
+\begin{eqnarray*}
+    (\sum_i \ket{u_i}\bra{u_i})\ket{v}&=&
+    \sum_i \ket{u_i}\bra{u_i}\sum_j \braket{u_j|v} \ket{u_j}\\
+    \pause
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\braket{u_i|u_j}\\
+    \pause
+    &=& \sum_{i,j}\braket{u_j|v}\ket{u_i}\delta_{i,j}\\
+    \pause
+    &=&\sum_i \braket{u_i|v}\ket{u_i}\\
+    &=&\ket{v}.
+\end{eqnarray*}
+\pause
+Since the above holds for any $\ket{v}$, $\sum\limits_i \ket{u_i}\bra{u_i}=I$.   
+\end{frame}
 
+\begin{frame}{Characterization of Orthogonality Preserving Matrices}
+\begin{prop} \label{orthogonality preserving character}
+$\{\ket{\psi}|M(\ket{\psi})^T$ is a scalar multiple of a $n \times n$ unitary matrix$\}$ is a characterization of all $\ket{\psi}$ in $\mathbb{C}^n \otimes \mathbb{C}^n$ such that orthogonality is preserved. i.e. if $\braket{u|v}=0$, then $\braket{M(\ket{\psi})^Tu|M(\ket{\psi}v}^T=0$.
+\end{prop}
 
-
+\end{frame}
 
 %%%%%%%%%%%%End ADDed%%%%%%%%%%%%%%%%%%%%%%%%%%
 
